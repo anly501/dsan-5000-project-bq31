@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Decision Trees Analysis of Game Data</title>
+</head>
+<body>
+    <h1>Decision Trees Analysis of Game Data</h1>
+
+    <section>
+        <h2>Technical Write-Up: Understanding Decision Trees and Ensemble Methods</h2>
+        <p>
+            Decision Trees (DT) are a form of supervised learning that can be used for classification or regression tasks. They work by breaking down a dataset into smaller subsets while at the same time an associated decision tree is incrementally developed. The final result is a tree with decision nodes and leaf nodes, where each decision node represents a choice between a number of alternatives, and each leaf node represents a classification or decision. This method is powerful due to its simplicity and the fact that it mirrors human decision-making more closely than other algorithms.
+        </p>
+        <p>
+            However, a single tree can be susceptible to overfitting, where the model performs well on training data but poorly on unseen data. To address this, ensemble methods like Random Forest (RF) and Gradient Boosting (GB) are used. RF improves upon DT by creating multiple trees and voting on the most common output, thus reducing overfitting and improving generalization. GB goes further by building trees sequentially, with each new tree attempting to correct the errors of the previous one, which often results in better predictive accuracy.
+        </p>
+    </section>
+
+    <section>
+        <h2>Class Distribution</h2>
+        <p>
+            Understanding the distribution of class labels in our dataset is crucial. An imbalanced distribution can bias the model's predictions. For instance, if a majority of games fall into the 'Medium' Peak CCU category, our model might be more likely to predict 'Medium' at the expense of 'Low' and 'High'. Here's how we can compute the distribution of class labels:
+            <code>
+                games_df['CCU_Category'].value_counts()
+            </code>
+            The results should be carefully considered when evaluating model performance.
+        </p>
+    </section>
+
+    <section>
+        <h2>Baseline Model for Comparison</h2>
+        <p>
+            A baseline model, in this case, a random classifier, is used to establish a minimum performance benchmark. This is important as it provides a point of reference to assess the performance of our more complex models. For our dataset, we compute baseline accuracy, precision, and recall values, which reflect the probability of random guesses across our classes. It's expected that our DT, RF, and GB models significantly outperform this baseline.
+        </p>
+    </section>
+
+    <section>
+        <h2>Model Tuning and Final Results</h2>
+        <p>
+            Model tuning involves adjusting hyperparameters to find the optimal settings for our models. Through a process such as Grid Search, we can systematically work through multiple combinations of parameter tunes, cross-validate each, and determine which one gives the best performance. We aim for the lowest validation error and seek to ensure that the validation and training error are close to avoid overfitting.
+        </p>
+        <p>
+            The final results of our optimally-fit models include training and validation errors, confusion matrices, and other evaluation metrics. The quality of fit is discussed, considering why the model may have performed well or poorly, and what could potentially improve it.
+        </p>
+    </section>
+
+    <section>
+        <h2>Conclusions</h2>
+        <p>
+            Our journey through the application of Decision Trees and ensemble methods to the game dataset has revealed the complexity behind what seems to be a straightforward task. We discovered that while our models can predict the 'Medium' Peak CCU category with high accuracy, they struggle with the 'Low' and 'High' categories, a common issue when dealing with imbalanced datasets.
+        </p>
+        <p>
+            This analysis is more than an academic exercise; it holds real-world significance for game developers seeking to understand and predict game popularity. Future directions could involve exploring alternative methods to handle class imbalance, integrating more diverse data sources, or applying deep learning techniques. The field is ripe for innovation, and our work lays the groundwork for more advanced exploration.
+        </p>
+    </section>
+</body>
+</html>
